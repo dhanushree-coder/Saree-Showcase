@@ -1,4 +1,4 @@
-// Boutique Sites Studio
+// Website Studio
 // Shows your websites ("My works") as cards. The owner signs in with the lock button
 // and can add, edit, reorder and delete cards. Everything is stored in Firebase Firestore.
 //
@@ -31,7 +31,7 @@ const TAG_PRESETS = [
   { e: '✨', t: 'New launch', c: '#A66BFF' },
   { e: '💖', t: 'Customer favourite', c: '#E0489C' },
   { e: '⭐', t: 'Top rated', c: '#A66BFF' },
-  { e: '🎀', t: 'Boutique special', c: '#E0489C' },
+  { e: '🎀', t: 'Special pick', c: '#E0489C' },
   { e: '🌸', t: 'Festive pick', c: '#FF4D6D' },
   { e: '👑', t: 'Premium', c: '#A66BFF' }
 ];
@@ -88,7 +88,7 @@ function toast(msg, ms) {
   setTimeout(() => t.remove(), ms || 3200);
 }
 function dbMsg(e) {
-  console.error('Boutique Sites Studio:', e);
+  console.error('Website Studio:', e);
   const c = e && e.code;
   if (c === 'permission-denied') return 'Firebase refused this for ' + ((auth && auth.currentUser && auth.currentUser.email) || 'a signed-out visitor') + '. Publish the rules from firestore.rules (Firestore Database, Rules tab) and sign in as ' + OWNER_EMAIL + '.';
   if (c === 'unavailable' || c === 'failed-precondition' || /network/i.test((e && e.message) || '')) return 'Could not reach Firebase. Check your internet and try again.';
@@ -350,7 +350,7 @@ function openEditor(wi) {
   let loaded = isNew, busy = false;
 
   const name = h('input', { class: 'in-t', id: 'e-name', type: 'text', maxlength: '60', value: d.name, autocomplete: 'off' });
-  const kind = h('input', { class: 'in-t', id: 'e-kind', type: 'text', maxlength: '80', value: d.kind, placeholder: 'For example: Silk saree boutique, Chennai', autocomplete: 'off' });
+  const kind = h('input', { class: 'in-t', id: 'e-kind', type: 'text', maxlength: '80', value: d.kind, placeholder: 'For example: Bakery, Chennai', autocomplete: 'off' });
   const url = h('input', { class: 'in-t', id: 'e-url', type: 'url', value: d.url, placeholder: 'https://', autocomplete: 'off' });
   const err = h('p', { class: 'err', role: 'alert', hidden: true });
   const meter = h('p', { class: 'meter' });
